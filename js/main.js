@@ -23,6 +23,7 @@
         this.el.classList.add('pressed');
         currentNum++;
 
+        if (currentNum === 4) {
           clearTimeout(timeoutId);
         }
       }

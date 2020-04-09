@@ -22,10 +22,12 @@
       if (currentNum === parseInt(this.el.textContent, 10)) {
         this.el.classList.add('pressed');
         currentNum++;
+
+          clearTimeout(timeoutId);
+        }
       }
     }
   }
-
   class Board {
     constructor() {
       this.panels = [];
@@ -44,19 +46,32 @@
     activate() {
       const nums = [0, 1, 2, 3];
       this.panels.forEach(panel => {
-
         const num = nums.splice(Math.floor(Math.random() * nums.length), 1)[0];
         panel.activate(num);
       });
     }
   }
 
+  function runTimer() {
+    const timer = document.getElementById('timer');
+    timer.textContent = ((Date.now() - startTime) / 1000).toFixed(2);
+
+    timeoutId = setTimeout(() => {
+      runTimer();
+    }, 10);
+  }
+
   const board = new Board();
 
   let currentNum = 0;
+  let startTime;
+  let timeoutId;
 
   const btn = document.getElementById('btn');
   btn.addEventListener('click', () => {
     board.activate();
+
+    startTime = Date.now();
+    runTimer();
   });
 }

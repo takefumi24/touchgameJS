@@ -42,9 +42,23 @@ body {
   margin-bottom: 1px;
 }
 
-
 #timer {
   margin-bottom: 8px;
   font-size: 20px;
   text-align: right;
+}
+
+#btn {
+  cursor: pointer;
+  user-select: none;
+  background: #f44336;
+  padding: 8px;
+  border-radius: 6px;
+  text-align: center;
+  box-shadow: 0 4px 0 #d1483e;
+}
+
+#btn:active {
+  margin-top: 13px;
+  box-shadow: none;
 }
